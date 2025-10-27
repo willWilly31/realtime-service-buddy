@@ -15,7 +15,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
           <header className="h-14 border-b bg-card flex items-center px-4">
             <SidebarTrigger />
             <div className="ml-4">
-              <h1 className="text-lg font-semibold">Dashboard Service HP</h1>
+              <h1 className="text-lg font-semibold">Dasbor Manajemen Service HP</h1>
             </div>
           </header>
           

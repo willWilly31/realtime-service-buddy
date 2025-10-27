@@ -140,7 +140,7 @@ export default function Dashboard() {
         {/* Dashboard Header */}
         <div className="bg-gradient-card p-6 rounded-xl shadow-card elegant-border">
           <h2 className="text-3xl font-bold tracking-tight bg-gradient-primary bg-clip-text text-transparent">
-            Dashboard Overview
+            Ringkasan Dashboard
           </h2>
           <p className="text-muted-foreground mt-2">
             Monitoring real-time bisnis service HP & penjualan aksesoris terlengkap
@@ -150,12 +150,12 @@ export default function Dashboard() {
         {/* Enhanced Metrics Cards */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           <MetricCard
-            title="Total Cashflow"
+            title="Total Arus Kas"
             value={dashboardMetrics.cashflow.total}
             change={dashboardMetrics.cashflow.change}
             changeType={dashboardMetrics.cashflow.changeType}
             icon={CreditCard}
-            description="Revenue bulan ini"
+            description="Pendapatan bulan ini"
             className="shadow-elegant bg-gradient-card"
           />
           <MetricCard
@@ -177,7 +177,7 @@ export default function Dashboard() {
             className="shadow-elegant bg-gradient-card"
           />
           <MetricCard
-            title="Pending Payment"
+            title="Menunggu Pembayaran"
             value={dashboardMetrics.pendingPayment.total}
             change={dashboardMetrics.pendingPayment.change}
             changeType={dashboardMetrics.pendingPayment.changeType}

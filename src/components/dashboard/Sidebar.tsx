@@ -26,14 +26,14 @@ import {
 } from "@/components/ui/sidebar";
 
 const menuItems = [
-  { title: "Dashboard", url: "/", icon: Home },
-  { title: "Unit Service", url: "/units", icon: Phone },
-  { title: "Cashflow", url: "/cashflow", icon: CreditCard },
-  { title: "Inventory", url: "/inventory", icon: Package },
+  { title: "Beranda", url: "/", icon: Home },
+  { title: "Unit Masuk", url: "/units", icon: Phone },
+  { title: "Arus Kas", url: "/cashflow", icon: CreditCard },
+  { title: "Inventori", url: "/inventory", icon: Package },
   { title: "Teknisi", url: "/technicians", icon: Users },
-  { title: "Aging Report", url: "/aging", icon: Clock },
-  { title: "Analytics", url: "/analytics", icon: BarChart3 },
-  { title: "Settings", url: "/settings", icon: Settings },
+  { title: "Laporan Aging", url: "/aging", icon: Clock },
+  { title: "Analitik", url: "/analytics", icon: BarChart3 },
+  { title: "Pengaturan", url: "/settings", icon: Settings },
 ];
 
 export function AppSidebar() {
