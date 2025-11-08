@@ -14,7 +14,346 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      activity_logs: {
+        Row: {
+          action: string
+          created_at: string
+          description: string
+          id: string
+          metadata: Json | null
+          service_unit_id: string | null
+          user_id: string
+        }
+        Insert: {
+          action: string
+          created_at?: string
+          description: string
+          id?: string
+          metadata?: Json | null
+          service_unit_id?: string | null
+          user_id: string
+        }
+        Update: {
+          action?: string
+          created_at?: string
+          description?: string
+          id?: string
+          metadata?: Json | null
+          service_unit_id?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "activity_logs_service_unit_id_fkey"
+            columns: ["service_unit_id"]
+            isOneToOne: false
+            referencedRelation: "service_units"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      customers: {
+        Row: {
+          address: string | null
+          created_at: string
+          created_by: string
+          email: string | null
+          id: string
+          name: string
+          notes: string | null
+          phone: string
+          updated_at: string
+        }
+        Insert: {
+          address?: string | null
+          created_at?: string
+          created_by: string
+          email?: string | null
+          id?: string
+          name: string
+          notes?: string | null
+          phone: string
+          updated_at?: string
+        }
+        Update: {
+          address?: string | null
+          created_at?: string
+          created_by?: string
+          email?: string | null
+          id?: string
+          name?: string
+          notes?: string | null
+          phone?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      inventory: {
+        Row: {
+          brand: string | null
+          category: string
+          created_at: string
+          created_by: string
+          id: string
+          location: string | null
+          min_stock: number | null
+          model: string | null
+          notes: string | null
+          part_name: string
+          quantity: number
+          supplier: string | null
+          unit_price: number
+          updated_at: string
+        }
+        Insert: {
+          brand?: string | null
+          category: string
+          created_at?: string
+          created_by: string
+          id?: string
+          location?: string | null
+          min_stock?: number | null
+          model?: string | null
+          notes?: string | null
+          part_name: string
+          quantity?: number
+          supplier?: string | null
+          unit_price: number
+          updated_at?: string
+        }
+        Update: {
+          brand?: string | null
+          category?: string
+          created_at?: string
+          created_by?: string
+          id?: string
+          location?: string | null
+          min_stock?: number | null
+          model?: string | null
+          notes?: string | null
+          part_name?: string
+          quantity?: number
+          supplier?: string | null
+          unit_price?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      payments: {
+        Row: {
+          amount: number
+          created_at: string
+          created_by: string
+          id: string
+          notes: string | null
+          payment_date: string
+          payment_method: string
+          payment_type: string
+          service_unit_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          created_by: string
+          id?: string
+          notes?: string | null
+          payment_date?: string
+          payment_method: string
+          payment_type: string
+          service_unit_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          created_by?: string
+          id?: string
+          notes?: string | null
+          payment_date?: string
+          payment_method?: string
+          payment_type?: string
+          service_unit_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "payments_service_unit_id_fkey"
+            columns: ["service_unit_id"]
+            isOneToOne: false
+            referencedRelation: "service_units"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          phone: string | null
+          role: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          phone?: string | null
+          role?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          phone?: string | null
+          role?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      service_parts: {
+        Row: {
+          created_at: string
+          created_by: string
+          id: string
+          inventory_id: string
+          price_used: number
+          quantity: number
+          service_unit_id: string
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          id?: string
+          inventory_id: string
+          price_used: number
+          quantity: number
+          service_unit_id: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          id?: string
+          inventory_id?: string
+          price_used?: number
+          quantity?: number
+          service_unit_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "service_parts_inventory_id_fkey"
+            columns: ["inventory_id"]
+            isOneToOne: false
+            referencedRelation: "inventory"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "service_parts_service_unit_id_fkey"
+            columns: ["service_unit_id"]
+            isOneToOne: false
+            referencedRelation: "service_units"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      service_units: {
+        Row: {
+          actual_completion: string | null
+          brand: string
+          checkin_date: string
+          cosmetic_condition: string | null
+          created_at: string
+          created_by: string
+          customer_id: string
+          device_type: string
+          estimated_completion: string | null
+          estimated_cost: number | null
+          final_cost: number | null
+          id: string
+          imei: string | null
+          issue_description: string
+          model: string
+          notes: string | null
+          password: string | null
+          priority: string
+          service_number: string
+          status: string
+          technician_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          actual_completion?: string | null
+          brand: string
+          checkin_date?: string
+          cosmetic_condition?: string | null
+          created_at?: string
+          created_by: string
+          customer_id: string
+          device_type: string
+          estimated_completion?: string | null
+          estimated_cost?: number | null
+          final_cost?: number | null
+          id?: string
+          imei?: string | null
+          issue_description: string
+          model: string
+          notes?: string | null
+          password?: string | null
+          priority?: string
+          service_number: string
+          status?: string
+          technician_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          actual_completion?: string | null
+          brand?: string
+          checkin_date?: string
+          cosmetic_condition?: string | null
+          created_at?: string
+          created_by?: string
+          customer_id?: string
+          device_type?: string
+          estimated_completion?: string | null
+          estimated_cost?: number | null
+          final_cost?: number | null
+          id?: string
+          imei?: string | null
+          issue_description?: string
+          model?: string
+          notes?: string | null
+          password?: string | null
+          priority?: string
+          service_number?: string
+          status?: string
+          technician_id?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "service_units_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "service_units_technician_id_fkey"
+            columns: ["technician_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
