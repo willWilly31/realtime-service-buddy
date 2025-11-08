@@ -8,29 +8,29 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Soft Elegant Theme */
-    --background: 220 20% 97%;
-    --foreground: 220 15% 20%;
+    /* DM Repair Dark Theme - inspired by logo colors */
+    --background: 222 20% 12%;
+    --foreground: 0 0% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 220 15% 20%;
+    --card: 222 18% 16%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 20%;
+    --popover: 222 18% 16%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 220 70% 60%;
+    --primary: 6 85% 65%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 92%;
-    --secondary-foreground: 220 15% 25%;
+    --secondary: 222 15% 22%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 220 15% 95%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 222 15% 20%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 260 60% 65%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 192 100% 55%;
+    --accent-foreground: 222 20% 12%;
 
-    --destructive: 0 70% 60%;
+    --destructive: 0 85% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --success: 145 65% 50%;
@@ -39,70 +39,67 @@ All colors MUST be HSL.
     --warning: 35 85% 55%;
     --warning-foreground: 0 0% 100%;
 
-    --border: 220 15% 88%;
-    --input: 220 15% 88%;
-    --ring: 220 70% 60%;
+    --border: 222 15% 24%;
+    --input: 222 15% 22%;
+    --ring: 6 85% 65%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* Soft gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(220 70% 60%), hsl(260 60% 65%));
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 20% 98%));
-    --gradient-accent: linear-gradient(135deg, hsl(220 15% 95%), hsl(260 20% 95%));
+    /* DM Repair gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(6 85% 65%), hsl(6 85% 55%));
+    --gradient-accent: linear-gradient(135deg, hsl(192 100% 55%), hsl(192 100% 45%));
+    --gradient-card: linear-gradient(145deg, hsl(222 18% 16%), hsl(222 18% 18%));
+    --gradient-hero: linear-gradient(135deg, hsl(6 85% 65% / 0.1), hsl(192 100% 55% / 0.1));
 
-    /* Soft shadows */
-    --shadow-elegant: 0 10px 30px -10px hsl(220 70% 60% / 0.2);
-    --shadow-card: 0 4px 20px -5px hsl(220 15% 20% / 0.08);
-    --shadow-glow: 0 0 30px hsl(220 70% 60% / 0.15);
+    /* Modern shadows */
+    --shadow-elegant: 0 10px 40px -10px hsl(6 85% 65% / 0.3);
+    --shadow-card: 0 4px 20px -5px hsl(0 0% 0% / 0.3);
+    --shadow-glow: 0 0 40px hsl(192 100% 55% / 0.2);
+    --shadow-strong: 0 20px 60px -15px hsl(0 0% 0% / 0.5);
 
-    --sidebar-background: 220 25% 98%;
-    --sidebar-foreground: 220 15% 20%;
-    --sidebar-primary: 220 70% 60%;
+    --sidebar-background: 222 20% 14%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 6 85% 65%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 15% 92%;
-    --sidebar-accent-foreground: 220 15% 25%;
-    --sidebar-border: 220 15% 88%;
-    --sidebar-ring: 220 70% 60%;
+    --sidebar-accent: 222 15% 22%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 222 15% 24%;
+    --sidebar-ring: 6 85% 65%;
   }
 
   .dark {
-    /* Soft dark mode */
-    --background: 220 20% 12%;
-    --foreground: 220 10% 95%;
+    /* Enhanced dark mode with lighter tones */
+    --background: 222 20% 18%;
+    --foreground: 0 0% 98%;
 
-    --card: 220 18% 16%;
-    --card-foreground: 220 10% 95%;
+    --card: 222 18% 22%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 220 18% 16%;
-    --popover-foreground: 220 10% 95%;
+    --popover: 222 18% 22%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 220 70% 65%;
-    --primary-foreground: 220 15% 10%;
+    --primary: 6 85% 70%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 22%;
-    --secondary-foreground: 220 10% 90%;
+    --secondary: 222 15% 28%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 220 15% 20%;
-    --muted-foreground: 220 10% 65%;
+    --muted: 222 15% 26%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 260 60% 70%;
-    --accent-foreground: 220 15% 10%;
+    --accent: 192 100% 60%;
+    --accent-foreground: 222 20% 12%;
 
-    --destructive: 0 70% 65%;
-    --destructive-foreground: 220 15% 10%;
+    --border: 222 15% 28%;
+    --input: 222 15% 28%;
 
-    --border: 220 15% 22%;
-    --input: 220 15% 22%;
-    --ring: 220 70% 65%;
-
-    --sidebar-background: 220 20% 14%;
-    --sidebar-foreground: 220 10% 95%;
-    --sidebar-primary: 220 70% 65%;
-    --sidebar-primary-foreground: 220 15% 10%;
-    --sidebar-accent: 220 15% 22%;
-    --sidebar-accent-foreground: 220 10% 90%;
-    --sidebar-border: 220 15% 22%;
-    --sidebar-ring: 220 70% 65%;
+    --sidebar-background: 222 20% 20%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 6 85% 70%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 15% 28%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 222 15% 28%;
   }
 }
 
@@ -143,13 +140,21 @@ All colors MUST be HSL.
   }
   
   .glass-effect {
-    backdrop-filter: blur(10px);
-    background: hsl(var(--card) / 0.8);
-    border: 1px solid hsl(var(--border) / 0.5);
+    backdrop-filter: blur(20px);
+    background: hsl(var(--card) / 0.6);
+    border: 1px solid hsl(var(--border) / 0.3);
   }
   
   .elegant-border {
-    border: 1px solid hsl(var(--border) / 0.3);
-    background: linear-gradient(145deg, hsl(var(--card)), hsl(var(--muted) / 0.5));
+    border: 1px solid hsl(var(--border) / 0.5);
+    background: hsl(var(--card));
+  }
+  
+  .metric-badge {
+    @apply inline-flex items-center justify-center rounded-full w-10 h-10;
+  }
+  
+  .chart-card {
+    @apply bg-card rounded-2xl p-6 border border-border;
   }
 }

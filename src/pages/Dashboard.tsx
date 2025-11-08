@@ -133,214 +133,185 @@ const recentUnits = [
 export default function Dashboard() {
   return (
     <DashboardLayout>
-      <div className="space-y-6">
-        {/* Store Header with Logo and Address */}
-        <StoreHeader />
+      <StoreHeader />
 
-        {/* Dashboard Header */}
-        <div className="bg-gradient-card p-6 rounded-xl shadow-card elegant-border">
-          <h2 className="text-3xl font-bold tracking-tight bg-gradient-primary bg-clip-text text-transparent">
-            Ringkasan Dashboard
-          </h2>
-          <p className="text-muted-foreground mt-2">
-            Monitoring real-time bisnis service HP & penjualan aksesoris terlengkap
-          </p>
+      {/* Top Metrics - Resq.io Style */}
+      <div className="grid gap-6 md:grid-cols-3 mb-6">
+        <div className="bg-card rounded-2xl p-6 border border-border relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -mr-16 -mt-16"></div>
+          <div className="relative">
+            <div className="flex items-center justify-between mb-4">
+              <span className="text-sm font-medium text-muted-foreground">Masalah Kritis</span>
+              <div className="metric-badge bg-primary/20 text-primary">
+                <span className="text-xs font-bold">12/9</span>
+              </div>
+            </div>
+            <div className="text-4xl font-bold text-foreground mb-2">38</div>
+            <div className="flex items-center space-x-2 text-xs text-muted-foreground">
+              <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+              <span>Critical issues</span>
+            </div>
+          </div>
         </div>
 
-        {/* Enhanced Metrics Cards */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          <MetricCard
-            title="Total Arus Kas"
-            value={dashboardMetrics.cashflow.total}
-            change={dashboardMetrics.cashflow.change}
-            changeType={dashboardMetrics.cashflow.changeType}
-            icon={CreditCard}
-            description="Pendapatan bulan ini"
-            className="shadow-elegant bg-gradient-card"
-          />
-          <MetricCard
-            title="Unit Masuk"
-            value={dashboardMetrics.unitsIn.total}
-            change={dashboardMetrics.unitsIn.change}
-            changeType={dashboardMetrics.unitsIn.changeType}
-            icon={TrendingUp}
-            description="Unit diterima untuk service"
-            className="shadow-elegant bg-gradient-card"
-          />
-          <MetricCard
-            title="Unit Selesai"
-            value={dashboardMetrics.unitsOut.total}
-            change={dashboardMetrics.unitsOut.change}
-            changeType={dashboardMetrics.unitsOut.changeType}
-            icon={CheckCircle}
-            description="Unit telah diselesaikan"
-            className="shadow-elegant bg-gradient-card"
-          />
-          <MetricCard
-            title="Menunggu Pembayaran"
-            value={dashboardMetrics.pendingPayment.total}
-            change={dashboardMetrics.pendingPayment.change}
-            changeType={dashboardMetrics.pendingPayment.changeType}
-            icon={Clock}
-            description="Unit menunggu pembayaran"
-            className="shadow-elegant bg-gradient-card"
-          />
+        <div className="bg-card rounded-2xl p-6 border border-border relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full -mr-16 -mt-16"></div>
+          <div className="relative">
+            <div className="flex items-center justify-between mb-4">
+              <span className="text-sm font-medium text-muted-foreground">Hari Dikerjakan</span>
+              <div className="metric-badge bg-accent/20 text-accent">
+                <span className="text-xs font-bold">24/9</span>
+              </div>
+            </div>
+            <div className="text-4xl font-bold text-foreground mb-2">26</div>
+            <div className="flex items-center space-x-2 text-xs text-muted-foreground">
+              <div className="w-2 h-2 rounded-full bg-accent animate-pulse"></div>
+              <span>Days spent</span>
+            </div>
+          </div>
         </div>
 
-        {/* Enhanced Recent Units Table */}
-        <Card className="shadow-card elegant-border">
-          <CardHeader className="bg-gradient-accent rounded-t-xl">
-            <CardTitle className="text-xl flex items-center gap-2">
-              <Package className="h-5 w-5 text-primary" />
-              Unit Service Terbaru
-            </CardTitle>
-            <CardDescription>
-              Real-time tracking unit service & estimasi waktu penyelesaian
-            </CardDescription>
+        <div className="bg-card rounded-2xl p-6 border border-border relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-warning/10 rounded-full -mr-16 -mt-16"></div>
+          <div className="relative">
+            <div className="flex items-center justify-between mb-4">
+              <span className="text-sm font-medium text-muted-foreground">Pekerjaan Mendesak</span>
+              <div className="metric-badge bg-warning/20 text-warning">
+                <span className="text-xs font-bold">30/9</span>
+              </div>
+            </div>
+            <div className="text-4xl font-bold text-foreground mb-2">103</div>
+            <div className="flex items-center space-x-2 text-xs text-muted-foreground">
+              <div className="w-2 h-2 rounded-full bg-warning animate-pulse"></div>
+              <span>Overnight work</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content Grid */}
+      <div className="grid gap-6 lg:grid-cols-3 mb-6">
+        {/* Summary Card */}
+        <div className="chart-card">
+          <h3 className="font-semibold text-foreground mb-4">Ringkasan</h3>
+          <div className="space-y-3">
+            <div className="flex items-center justify-between p-3 bg-secondary rounded-lg">
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 rounded-full bg-primary"></div>
+                <span className="text-sm text-foreground">Triage</span>
+              </div>
+              <span className="font-bold text-foreground">1234</span>
+            </div>
+            <div className="flex items-center justify-between p-3 bg-secondary rounded-lg">
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 rounded-full bg-muted"></div>
+                <span className="text-sm text-foreground">Fixing</span>
+              </div>
+              <span className="font-bold text-foreground">0</span>
+            </div>
+            <div className="flex items-center justify-between p-3 bg-secondary rounded-lg">
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 rounded-full bg-accent"></div>
+                <span className="text-sm text-foreground">Investigating</span>
+              </div>
+              <span className="font-bold text-foreground">24</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Statistics - Placeholder for chart */}
+        <div className="chart-card lg:col-span-2">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="font-semibold text-foreground">Frekuensi Insiden</h3>
+            <div className="flex space-x-2">
+              <button className="px-3 py-1 text-xs rounded-lg bg-secondary text-foreground">12 bulan</button>
+              <button className="px-3 py-1 text-xs rounded-lg bg-muted text-muted-foreground">30 hari</button>
+              <button className="px-3 py-1 text-xs rounded-lg bg-muted text-muted-foreground">1 minggu</button>
+            </div>
+          </div>
+          <div className="h-48 flex items-center justify-center bg-secondary/50 rounded-lg border border-border">
+            <p className="text-muted-foreground text-sm">Area Chart Placeholder</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Active Incidents */}
+      <div className="grid gap-6 lg:grid-cols-2">
+        <Card className="bg-card border-border">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-lg">Unit Aktif</CardTitle>
+              <div className="flex space-x-2">
+                <button className="px-3 py-1 text-xs rounded-lg bg-secondary text-foreground">Terbaru</button>
+                <button className="px-3 py-1 text-xs rounded-lg bg-muted text-muted-foreground">Semua</button>
+              </div>
+            </div>
           </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow className="border-border/50">
-                  <TableHead className="font-semibold">ID Service</TableHead>
-                  <TableHead className="font-semibold">Customer</TableHead>
-                  <TableHead className="font-semibold">Device</TableHead>
-                  <TableHead className="font-semibold">Kerusakan</TableHead>
-                  <TableHead className="font-semibold">Teknisi</TableHead>
-                  <TableHead className="font-semibold">Status</TableHead>
-                  <TableHead className="font-semibold">Payment</TableHead>
-                  <TableHead className="font-semibold">Estimasi</TableHead>
-                  <TableHead className="text-right font-semibold">Amount</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {recentUnits.map((unit) => (
-                  <TableRow key={unit.id} className="hover:bg-muted/30 border-border/30">
-                    <TableCell className="font-mono font-medium text-primary">{unit.id}</TableCell>
-                    <TableCell className="font-medium">{unit.customer}</TableCell>
-                    <TableCell className="text-muted-foreground">{unit.phone}</TableCell>
-                    <TableCell>{unit.issue}</TableCell>
-                    <TableCell className="text-accent">{unit.technician}</TableCell>
-                    <TableCell>
-                      <StatusBadge status={unit.status}>
-                        {unit.status === "in-progress" ? "Dikerjakan" : 
-                         unit.status === "completed" ? "Selesai" : "Pending"}
+          <CardContent className="space-y-4">
+            {recentUnits.slice(0, 3).map((unit) => (
+              <div key={unit.id} className="p-4 bg-secondary rounded-xl border border-border">
+                <div className="flex items-start justify-between mb-2">
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-2 mb-1">
+                      <StatusBadge status={unit.status as any}>
+                        {unit.status === 'in-progress' ? 'Investigating' : 'Fixing'}
                       </StatusBadge>
-                    </TableCell>
-                    <TableCell>
-                      <StatusBadge status={unit.payment}>
-                        {unit.payment === "paid" ? "Lunas" :
-                         unit.payment === "dp" ? "DP" : "Belum Bayar"}
-                      </StatusBadge>
-                    </TableCell>
-                    <TableCell className="text-sm text-muted-foreground">{unit.estimatedCompletion}</TableCell>
-                    <TableCell className="text-right font-bold text-primary">{unit.amount}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                      <span className="text-xs text-muted-foreground">{unit.id}</span>
+                    </div>
+                    <p className="text-sm text-foreground font-medium">{unit.issue}</p>
+                  </div>
+                  <span className="text-xs text-muted-foreground">{unit.estimatedCompletion}</span>
+                </div>
+                <div className="flex items-center space-x-2 mt-3">
+                  <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-xs text-primary-foreground font-bold">
+                    {unit.customer.charAt(0)}
+                  </div>
+                  <span className="text-xs text-muted-foreground">{unit.customer}</span>
+                </div>
+              </div>
+            ))}
           </CardContent>
         </Card>
 
-        {/* Enhanced Quick Stats */}
-        <div className="grid gap-6 md:grid-cols-3">
-          <Card className="shadow-card elegant-border">
-            <CardHeader className="bg-gradient-accent rounded-t-xl">
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <Users className="h-5 w-5 text-primary" />
-                Teknisi Aktif
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-4">
-              <div className="space-y-3">
-                <div className="flex justify-between items-center p-2 bg-muted/20 rounded-lg">
-                  <div>
-                    <span className="font-medium">Ahmad Kurniawan</span>
-                    <p className="text-xs text-muted-foreground">Senior Technician</p>
+        {/* Statistics Donut */}
+        <Card className="bg-card border-border">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-lg">Statistik</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="h-64 flex items-center justify-center">
+              <div className="text-center">
+                <div className="relative w-48 h-48 mx-auto mb-4">
+                  <div className="absolute inset-0 rounded-full bg-primary opacity-20"></div>
+                  <div className="absolute inset-8 rounded-full bg-accent opacity-30"></div>
+                  <div className="absolute inset-16 rounded-full bg-warning opacity-20"></div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="text-4xl font-bold text-primary">64%</div>
+                      <div className="text-xs text-muted-foreground">Investigating</div>
+                    </div>
                   </div>
-                  <span className="text-primary font-bold">3 unit</span>
                 </div>
-                <div className="flex justify-between items-center p-2 bg-muted/20 rounded-lg">
-                  <div>
-                    <span className="font-medium">Rizki Pratama</span>
-                    <p className="text-xs text-muted-foreground">Mid Technician</p>
+                <div className="flex items-center justify-center space-x-4 text-xs">
+                  <div className="flex items-center space-x-1">
+                    <div className="w-3 h-3 rounded-full bg-primary"></div>
+                    <span className="text-muted-foreground">64% Investigating</span>
                   </div>
-                  <span className="text-primary font-bold">3 unit</span>
-                </div>
-                <div className="flex justify-between items-center p-2 bg-muted/20 rounded-lg">
-                  <div>
-                    <span className="font-medium">Dedi Firmansyah</span>
-                    <p className="text-xs text-muted-foreground">Hardware Specialist</p>
+                  <div className="flex items-center space-x-1">
+                    <div className="w-3 h-3 rounded-full bg-accent"></div>
+                    <span className="text-muted-foreground">26% Triage</span>
                   </div>
-                  <span className="text-primary font-bold">2 unit</span>
+                  <div className="flex items-center space-x-1">
+                    <div className="w-3 h-3 rounded-full bg-warning"></div>
+                    <span className="text-muted-foreground">15% Fixing</span>
+                  </div>
                 </div>
               </div>
-            </CardContent>
-          </Card>
-
-          <Card className="shadow-card elegant-border">
-            <CardHeader className="bg-gradient-accent rounded-t-xl">
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <Package className="h-5 w-5 text-warning" />
-                Inventory Alert
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-4">
-              <div className="space-y-3">
-                <div className="flex justify-between items-center p-2 bg-destructive/10 rounded-lg border border-destructive/20">
-                  <div>
-                    <span className="font-medium">LCD iPhone 14 Pro Max</span>
-                    <p className="text-xs text-muted-foreground">High Priority</p>
-                  </div>
-                  <span className="text-destructive font-bold">Stock: 1</span>
-                </div>
-                <div className="flex justify-between items-center p-2 bg-warning/10 rounded-lg border border-warning/20">
-                  <div>
-                    <span className="font-medium">Baterai Samsung S23</span>
-                    <p className="text-xs text-muted-foreground">Medium Priority</p>
-                  </div>
-                  <span className="text-warning font-bold">Stock: 4</span>
-                </div>
-                <div className="flex justify-between items-center p-2 bg-success/10 rounded-lg border border-success/20">
-                  <div>
-                    <span className="font-medium">Charger Type-C</span>
-                    <p className="text-xs text-muted-foreground">Good Stock</p>
-                  </div>
-                  <span className="text-success font-bold">Stock: 28</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="shadow-card elegant-border">
-            <CardHeader className="bg-gradient-accent rounded-t-xl">
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <TrendingUp className="h-5 w-5 text-success" />
-                Performa Hari Ini
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-4">
-              <div className="space-y-3">
-                <div className="flex justify-between items-center p-2 bg-success/10 rounded-lg">
-                  <span className="font-medium">Target Harian</span>
-                  <span className="text-success font-bold">85%</span>
-                </div>
-                <div className="flex justify-between items-center p-2 bg-primary/10 rounded-lg">
-                  <span className="font-medium">Unit Selesai</span>
-                  <span className="text-primary font-bold">12/15</span>
-                </div>
-                <div className="flex justify-between items-center p-2 bg-accent/10 rounded-lg">
-                  <span className="font-medium">Rata-rata Repair</span>
-                  <span className="text-accent font-bold">3.2 jam</span>
-                </div>
-                <div className="flex justify-between items-center p-2 bg-muted/20 rounded-lg">
-                  <span className="font-medium">Customer Rating</span>
-                  <span className="text-warning font-bold">⭐ 4.8/5</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </DashboardLayout>
   );
