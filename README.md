@@ -1,26 +1,12 @@
-# Welcome to your Lovable project
+## Product analysis
 
-## Project info
+- PRD & end-to-end flow audit: [`docs/PRD_FLOW_AUDIT.md`](docs/PRD_FLOW_AUDIT.md)
+- Production hardening checklist: [`docs/PRODUCTION_HARDENING_CHECKLIST.md`](docs/PRODUCTION_HARDENING_CHECKLIST.md)
+- Release notes: [`CHANGELOG.md`](CHANGELOG.md)
 
-**URL**: https://lovable.dev/projects/e8957334-e176-43c8-a74f-852ab2c7593f
+## Packaging
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/e8957334-e176-43c8-a74f-852ab2c7593f) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Untuk distribusi komersial, buat file ZIP secara lokal (jangan commit binary ke git/PR):
 
 ```sh
 # Step 1: Clone the repository using the project's Git URL.
