@@ -4,8 +4,6 @@ import {
   CreditCard,
   Package,
   Users,
-  Wrench,
-  TrendingUp,
   Settings,
   Home,
   Phone,
@@ -21,9 +19,9 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { BrandIdentity } from "./BrandIdentity";
 
 const menuItems = [
   { title: "Beranda", url: "/", icon: Home },
@@ -51,15 +49,7 @@ export function AppSidebar() {
     <Sidebar className={isCollapsed ? "w-14" : "w-64"} collapsible="icon">
       <SidebarContent>
         <div className="p-4">
-          <div className="flex items-center gap-2">
-            <Wrench className="h-8 w-8 text-primary" />
-            {!isCollapsed && (
-              <div>
-                <h2 className="text-lg font-bold">ServiceHub</h2>
-                <p className="text-xs text-muted-foreground">HP Service & Sales</p>
-              </div>
-            )}
-          </div>
+          <BrandIdentity compact={isCollapsed} />
         </div>
 
         <SidebarGroup>

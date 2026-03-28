@@ -3,13 +3,23 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Plus, Search, Filter, Phone, Calendar, User, AlertCircle } from "lucide-react";
-import { useState, useEffect } from "react";
+import { Plus, Search, Filter, Phone, User, AlertCircle } from "lucide-react";
+import { useState, useEffect, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import type { Database } from "@/integrations/supabase/types";
 import { toast } from "sonner";
+import { getErrorMessage } from "@/lib/errors";
+
+type ServiceUnitRow = Database["public"]["Tables"]["service_units"]["Row"];
+type ProfileRow = Database["public"]["Tables"]["profiles"]["Row"];
+type CustomerRow = Database["public"]["Tables"]["customers"]["Row"];
+type ServiceUnitListItem = ServiceUnitRow & {
+  customer: CustomerRow | null;
+  technician: ProfileRow | null;
+};
 
 export default function Units() {
-  const [units, setUnits] = useState<any[]>([]);
+  const [units, setUnits] = useState<ServiceUnitListItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -49,16 +59,16 @@ export default function Units() {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      setUnits(data || []);
-    } catch (error: any) {
-      toast.error(error.message);
+      setUnits((data || []) as ServiceUnitListItem[]);
+    } catch (error) {
+      toast.error(getErrorMessage(error, "Gagal memuat data unit service."));
     } finally {
       setLoading(false);
     }
   };
 
   const getStatusColor = (status: string) => {
-    const colors: any = {
+    const colors: Record<string, string> = {
       'pending': 'bg-warning/20 text-warning border-warning/50',
       'in-progress': 'bg-accent/20 text-accent border-accent/50',
       'waiting-parts': 'bg-muted/20 text-muted-foreground border-muted',
@@ -69,12 +79,12 @@ export default function Units() {
     return colors[status] || 'bg-muted';
   };
 
-  const filteredUnits = units.filter(unit =>
+  const filteredUnits = useMemo(() => units.filter(unit =>
     unit.service_number?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     unit.customer?.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     unit.brand?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     unit.model?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  ), [units, searchTerm]);
 
   return (
     <DashboardLayout>
