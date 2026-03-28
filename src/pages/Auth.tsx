@@ -6,60 +6,64 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { Wrench } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useBranding } from "@/hooks/use-branding";
+import { getErrorMessage } from "@/lib/errors";
 
 export default function Auth() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { branding } = useBranding();
 
   const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    
-    const formData = new FormData(e.currentTarget);
-    const email = formData.get("signup-email") as string;
-    const password = formData.get("signup-password") as string;
-    const fullName = formData.get("full-name") as string;
+    try {
+      const formData = new FormData(e.currentTarget);
+      const email = formData.get("signup-email") as string;
+      const password = formData.get("signup-password") as string;
+      const fullName = formData.get("full-name") as string;
 
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          full_name: fullName,
-          role: 'technician'
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            full_name: fullName,
+            role: 'technician'
+          }
         }
-      }
-    });
+      });
 
-    setLoading(false);
-    if (error) {
-      toast.error(error.message);
-    } else {
+      if (error) throw error;
       toast.success("Akun berhasil dibuat! Silakan login.");
+    } catch (error) {
+      toast.error(getErrorMessage(error, "Registrasi gagal. Silakan coba lagi."));
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    
-    const formData = new FormData(e.currentTarget);
-    const email = formData.get("signin-email") as string;
-    const password = formData.get("signin-password") as string;
+    try {
+      const formData = new FormData(e.currentTarget);
+      const email = formData.get("signin-email") as string;
+      const password = formData.get("signin-password") as string;
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    setLoading(false);
-    if (error) {
-      toast.error(error.message);
-    } else {
+      if (error) throw error;
       toast.success("Login berhasil!");
       navigate("/");
+    } catch (error) {
+      toast.error(getErrorMessage(error, "Login gagal. Silakan cek email dan password."));
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -67,12 +71,12 @@ export default function Auth() {
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <div className="w-full max-w-md">
         <div className="flex items-center justify-center mb-8 gap-3">
-          <div className="p-3 bg-primary/10 rounded-2xl">
-            <Wrench className="h-10 w-10 text-primary" />
+          <div className="p-3 bg-primary/10 rounded-2xl w-16 h-16 flex items-center justify-center">
+            <img src={branding.logoDataUrl} alt={branding.businessName} className="w-full h-full object-contain" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-foreground">DM Repair</h1>
-            <p className="text-sm text-muted-foreground">Enterprise Service Management</p>
+            <h1 className="text-3xl font-bold text-foreground">{branding.businessName}</h1>
+            <p className="text-sm text-muted-foreground">{branding.tagline}</p>
           </div>
         </div>
 
