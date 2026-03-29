@@ -1,15 +1,23 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import defaultLogo from "@/assets/aura-logo.svg";
 import defaultLogo from "@/assets/dm-repair-logo.png";
 
 export interface BrandingConfig {
   businessName: string;
   tagline: string;
   logoDataUrl: string;
+  showPoweredByAura: boolean;
+  poweredByText: string;
 }
 
 const STORAGE_KEY = "service_buddy_branding_v1";
 
 const DEFAULT_BRANDING: BrandingConfig = {
+  businessName: "Aura",
+  tagline: "Service Buddy",
+  logoDataUrl: defaultLogo,
+  showPoweredByAura: true,
+  poweredByText: "Dirajut oleh Aura",
   businessName: "DM Repair",
   tagline: "Solution for your smartphone",
   logoDataUrl: defaultLogo,
@@ -37,6 +45,23 @@ export function BrandingProvider({ children }: { children: React.ReactNode }) {
       localStorage.removeItem(STORAGE_KEY);
     }
   }, []);
+
+  useEffect(() => {
+    document.title = branding.businessName || "Aura Service Buddy";
+
+    const setOrCreateLink = (rel: string) => {
+      let link = document.querySelector(`link[rel=\"${rel}\"]`) as HTMLLinkElement | null;
+      if (!link) {
+        link = document.createElement("link");
+        link.rel = rel;
+        document.head.appendChild(link);
+      }
+      link.href = branding.logoDataUrl;
+    };
+
+    setOrCreateLink("icon");
+    setOrCreateLink("apple-touch-icon");
+  }, [branding.businessName, branding.logoDataUrl]);
 
   const value = useMemo<BrandingContextValue>(() => ({
     branding,

@@ -8,6 +8,7 @@ import { Upload, RotateCcw, ImagePlus } from "lucide-react";
 import { useBranding } from "@/hooks/use-branding";
 import { toast } from "sonner";
 import { getErrorMessage } from "@/lib/errors";
+import { Switch } from "@/components/ui/switch";
 
 const ACCEPTED_IMAGE_TYPES = ["image/png", "image/jpeg", "image/webp", "image/svg+xml"];
 const MAX_SIZE_MB = 3;
@@ -75,6 +76,38 @@ export default function Settings() {
                 value={branding.tagline}
                 onChange={(e) => updateBranding({ tagline: e.target.value })}
                 placeholder="Contoh: Solusi servis enterprise tercepat"
+              />
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>White-label & Signature</CardTitle>
+            <CardDescription>
+              Kontrol apakah signature Aura ditampilkan ke client.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-center justify-between gap-4 rounded-xl border p-4">
+              <div>
+                <p className="font-medium">Tampilkan signature</p>
+                <p className="text-sm text-muted-foreground">Contoh: “Dirajut oleh Aura”.</p>
+              </div>
+              <Switch
+                checked={branding.showPoweredByAura}
+                onCheckedChange={(checked) => updateBranding({ showPoweredByAura: checked })}
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="powered-by-text">Teks Signature</Label>
+              <Input
+                id="powered-by-text"
+                value={branding.poweredByText}
+                onChange={(e) => updateBranding({ poweredByText: e.target.value })}
+                placeholder="Dirajut oleh Aura"
+                disabled={!branding.showPoweredByAura}
               />
             </div>
           </CardContent>

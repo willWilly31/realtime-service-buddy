@@ -1,3 +1,8 @@
+# Aura Service Buddy
+
+Aplikasi manajemen service smartphone berbasis React + Supabase.
+
+## Quick Start
 ## Product analysis
 
 - PRD & end-to-end flow audit: [`docs/PRD_FLOW_AUDIT.md`](docs/PRD_FLOW_AUDIT.md)
@@ -9,52 +14,42 @@
 Untuk distribusi komersial, buat file ZIP secara lokal (jangan commit binary ke git/PR):
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Scripts
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- `npm run dev` — jalankan development server.
+- `npm run build` — build production.
+- `npm run preview` — preview build.
+- `npm run lint` — linting kode.
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
+## Tech Stack
 
 - Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- React + TypeScript
+- Tailwind + shadcn/ui
+- Supabase
 
-## How can I deploy this project?
+## Branding & Favicon
 
-Simply open [Lovable](https://lovable.dev/projects/e8957334-e176-43c8-a74f-852ab2c7593f) and click on Share -> Publish.
+- Favicon saat ini menggunakan `public/aura-logo.svg` via `index.html`.
+- Untuk ganti ke logo brand kamu (misalnya logo Aura), replace file berikut dengan gambar baru:
+  - `public/aura-logo.svg`
 
-## Can I connect a custom domain to my Lovable project?
+## Product docs
 
-Yes, you can!
+- PRD & flow audit: [`docs/PRD_FLOW_AUDIT.md`](docs/PRD_FLOW_AUDIT.md)
+- Production hardening checklist: [`docs/PRODUCTION_HARDENING_CHECKLIST.md`](docs/PRODUCTION_HARDENING_CHECKLIST.md)
+- RBAC + tenant test matrix: [`docs/RBAC_TENANT_TEST_MATRIX.md`](docs/RBAC_TENANT_TEST_MATRIX.md)
+- SQL smoke test: [`supabase/tests/rbac_tenant_smoke.sql`](supabase/tests/rbac_tenant_smoke.sql)
+- Tenant provisioning guide: [`docs/TENANT_PROVISIONING.md`](docs/TENANT_PROVISIONING.md)
+- Changelog: [`CHANGELOG.md`](CHANGELOG.md)
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Packaging
+
+Untuk distribusi, generate ZIP secara lokal (jangan commit binary ke repo):
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
 

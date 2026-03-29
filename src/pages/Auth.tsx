@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { useBranding } from "@/hooks/use-branding";
 import { getErrorMessage } from "@/lib/errors";
+import { PoweredByAura } from "@/components/PoweredByAura";
 
 export default function Auth() {
   const [loading, setLoading] = useState(false);
@@ -29,6 +30,7 @@ export default function Auth() {
         password,
         options: {
           data: {
+            full_name: fullName
             full_name: fullName,
             role: 'technician'
           }
@@ -164,6 +166,9 @@ export default function Auth() {
             </Tabs>
           </CardContent>
         </Card>
+        <div className="mt-4 text-center">
+          <PoweredByAura />
+        </div>
       </div>
     </div>
   );

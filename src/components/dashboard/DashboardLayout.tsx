@@ -1,5 +1,6 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "./Sidebar";
+import { PoweredByAura } from "@/components/PoweredByAura";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -22,6 +23,9 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
           <main className="flex-1 p-6">
             {children}
           </main>
+          <footer className="px-6 py-3 border-t bg-card/60">
+            <PoweredByAura />
+          </footer>
         </div>
       </div>
     </SidebarProvider>
