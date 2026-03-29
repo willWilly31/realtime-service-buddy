@@ -11,8 +11,8 @@ export function StoreHeader() {
         {/* Logo and Store Info */}
         <div className="flex items-center space-x-6">
           {/* Logo */}
-          <div className="w-20 h-20 rounded-2xl flex items-center justify-center bg-card border border-border overflow-hidden">
-            <img src={branding.logoDataUrl} alt={branding.businessName} className="w-full h-full object-cover" />
+          <div className="w-20 h-20 rounded-2xl flex items-center justify-center bg-card border border-border p-2">
+            <img src={branding.logoDataUrl} alt={branding.businessName} className="w-full h-full object-contain" />
           </div>
           
           {/* Store Details */}

@@ -3,6 +3,15 @@
 Aplikasi manajemen service smartphone berbasis React + Supabase.
 
 ## Quick Start
+## Product analysis
+
+- PRD & end-to-end flow audit: [`docs/PRD_FLOW_AUDIT.md`](docs/PRD_FLOW_AUDIT.md)
+- Production hardening checklist: [`docs/PRODUCTION_HARDENING_CHECKLIST.md`](docs/PRODUCTION_HARDENING_CHECKLIST.md)
+- Release notes: [`CHANGELOG.md`](CHANGELOG.md)
+
+## Packaging
+
+Untuk distribusi komersial, buat file ZIP secara lokal (jangan commit binary ke git/PR):
 
 ```sh
 npm install
@@ -41,6 +50,18 @@ npm run dev
 ## Packaging
 
 Untuk distribusi, generate ZIP secara lokal (jangan commit binary ke repo):
+
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+## Product analysis
+
+- PRD & end-to-end flow audit: [`docs/PRD_FLOW_AUDIT.md`](docs/PRD_FLOW_AUDIT.md)
+- Production hardening checklist: [`docs/PRODUCTION_HARDENING_CHECKLIST.md`](docs/PRODUCTION_HARDENING_CHECKLIST.md)
+- Release notes: [`CHANGELOG.md`](CHANGELOG.md)
+
+## Packaging
+
+Untuk distribusi komersial, buat file ZIP secara lokal (jangan commit binary ke git/PR):
 
 ```sh
 zip -r realtime-service-buddy-commercial-ready.zip . -x "node_modules/*" ".git/*"

@@ -31,6 +31,8 @@ export default function Auth() {
         options: {
           data: {
             full_name: fullName
+            full_name: fullName,
+            role: 'technician'
           }
         }
       });
@@ -38,12 +40,7 @@ export default function Auth() {
       if (error) throw error;
       toast.success("Akun berhasil dibuat! Silakan login.");
     } catch (error) {
-      const message = getErrorMessage(error, "Registrasi gagal. Silakan coba lagi.");
-      toast.error(
-        message.toLowerCase().includes("failed to fetch")
-          ? "Gagal terhubung ke server auth. Cek koneksi internet dan konfigurasi Supabase (URL/KEY)."
-          : message
-      );
+      toast.error(getErrorMessage(error, "Registrasi gagal. Silakan coba lagi."));
     } finally {
       setLoading(false);
     }
@@ -66,12 +63,7 @@ export default function Auth() {
       toast.success("Login berhasil!");
       navigate("/");
     } catch (error) {
-      const message = getErrorMessage(error, "Login gagal. Silakan cek email dan password.");
-      toast.error(
-        message.toLowerCase().includes("failed to fetch")
-          ? "Gagal terhubung ke server auth. Cek koneksi internet dan konfigurasi Supabase (URL/KEY)."
-          : message
-      );
+      toast.error(getErrorMessage(error, "Login gagal. Silakan cek email dan password."));
     } finally {
       setLoading(false);
     }
@@ -81,8 +73,8 @@ export default function Auth() {
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <div className="w-full max-w-md">
         <div className="flex items-center justify-center mb-8 gap-3">
-          <div className="bg-primary/10 rounded-2xl w-16 h-16 flex items-center justify-center overflow-hidden">
-            <img src={branding.logoDataUrl} alt={branding.businessName} className="w-full h-full object-cover" />
+          <div className="p-3 bg-primary/10 rounded-2xl w-16 h-16 flex items-center justify-center">
+            <img src={branding.logoDataUrl} alt={branding.businessName} className="w-full h-full object-contain" />
           </div>
           <div>
             <h1 className="text-3xl font-bold text-foreground">{branding.businessName}</h1>

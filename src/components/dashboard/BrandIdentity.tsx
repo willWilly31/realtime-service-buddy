@@ -9,8 +9,8 @@ export function BrandIdentity({ compact = false }: BrandIdentityProps) {
 
   return (
     <div className="flex items-center gap-3">
-      <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-card border border-border overflow-hidden">
-        <img src={branding.logoDataUrl} alt={branding.businessName} className="w-full h-full object-cover" />
+      <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-card border border-border p-1.5 overflow-hidden">
+        <img src={branding.logoDataUrl} alt={branding.businessName} className="w-full h-full object-contain" />
       </div>
       {!compact && (
         <div className="min-w-0">
