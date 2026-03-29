@@ -1,6 +1,6 @@
 {
-  "name": "DM Repair - Service HP Enterprise",
-  "short_name": "DM Repair",
+  "name": "Aura Service Buddy",
+  "short_name": "Aura",
   "description": "Enterprise phone repair service management system",
   "theme_color": "#f66d5f",
   "background_color": "#1e2530",
@@ -10,15 +10,10 @@
   "start_url": "/",
   "icons": [
     {
-      "src": "/dm-repair-logo.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/dm-repair-logo.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "src": "/aura-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
     }
   ]
 }
