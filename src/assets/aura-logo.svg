@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Aura logo">
+  <defs>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+    <linearGradient id="yellow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fde047"/>
+      <stop offset="100%" stop-color="#eab308"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="100%" stop-color="#16a34a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="256" height="256" rx="44" fill="#0f172a"/>
+
+  <path d="M68 184c-2-54 18-98 58-128-8 35-3 65 9 90 8 17 10 34 2 56-30-2-52-8-69-18z" fill="url(#red)"/>
+  <path d="M102 196c-1-48 19-86 57-112-6 31-1 58 9 81 8 17 10 33 3 53-28-2-49-8-69-22z" fill="url(#yellow)"/>
+  <path d="M138 200c2-41 22-72 58-92-5 26-2 49 6 69 6 15 7 29 2 46-28-1-47-7-66-23z" fill="url(#green)"/>
+</svg>

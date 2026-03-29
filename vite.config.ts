@@ -1,24 +1,22 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
 import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig(() => ({
   server: {
     host: "::",
     port: 8080,
   },
   plugins: [
     react(),
-    mode === 'development' && componentTagger(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'robots.txt', 'dm-repair-logo.png'],
+      includeAssets: ['favicon.ico', 'robots.txt', 'aura-logo.svg'],
       manifest: {
-        name: 'DM Repair - Service HP Enterprise',
-        short_name: 'DM Repair',
+        name: 'Aura Service Buddy',
+        short_name: 'Aura',
         description: 'Enterprise phone repair service management system',
         theme_color: '#f66d5f',
         background_color: '#1e2530',
@@ -28,15 +26,10 @@ export default defineConfig(({ mode }) => ({
         start_url: '/',
         icons: [
           {
-            src: '/dm-repair-logo.png',
-            sizes: '192x192',
-            type: 'image/png'
-          },
-          {
-            src: '/dm-repair-logo.png',
-            sizes: '512x512',
-            type: 'image/png',
-            purpose: 'any maskable'
+            src: '/aura-logo.svg',
+            sizes: 'any',
+            type: 'image/svg+xml',
+            purpose: 'any'
           }
         ]
       },

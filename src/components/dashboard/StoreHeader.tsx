@@ -1,22 +1,24 @@
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Phone, Clock } from "lucide-react";
-import logoImage from "@/assets/dm-repair-logo.png";
+import { useBranding } from "@/hooks/use-branding";
 
 export function StoreHeader() {
+  const { branding } = useBranding();
+
   return (
     <div className="mb-8">
       <div className="flex items-center justify-between">
         {/* Logo and Store Info */}
         <div className="flex items-center space-x-6">
           {/* Logo */}
-          <div className="w-20 h-20 rounded-2xl flex items-center justify-center bg-card border border-border p-2">
-            <img src={logoImage} alt="DM Repair" className="w-full h-full object-contain" />
+          <div className="w-20 h-20 rounded-2xl flex items-center justify-center bg-card border border-border overflow-hidden">
+            <img src={branding.logoDataUrl} alt={branding.businessName} className="w-full h-full object-cover" />
           </div>
           
           {/* Store Details */}
           <div className="space-y-1">
-            <h1 className="text-3xl font-bold text-foreground">DM Repair</h1>
-            <p className="text-muted-foreground text-sm">Solution for your smartphone</p>
+            <h1 className="text-3xl font-bold text-foreground">{branding.businessName}</h1>
+            <p className="text-muted-foreground text-sm">{branding.tagline}</p>
             
             <div className="flex items-center space-x-4 text-sm text-muted-foreground pt-2">
               <div className="flex items-center space-x-1">
