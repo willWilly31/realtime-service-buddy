@@ -31,6 +31,8 @@ export default function Auth() {
         options: {
           data: {
             full_name: fullName
+            full_name: fullName,
+            role: 'technician'
           }
         }
       });

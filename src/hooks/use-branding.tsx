@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import defaultLogo from "@/assets/aura-logo.svg";
+import defaultLogo from "@/assets/dm-repair-logo.png";
 
 export interface BrandingConfig {
   businessName: string;
@@ -17,6 +18,9 @@ const DEFAULT_BRANDING: BrandingConfig = {
   logoDataUrl: defaultLogo,
   showPoweredByAura: true,
   poweredByText: "Dirajut oleh Aura",
+  businessName: "DM Repair",
+  tagline: "Solution for your smartphone",
+  logoDataUrl: defaultLogo,
 };
 
 interface BrandingContextValue {
